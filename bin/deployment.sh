@@ -2,9 +2,6 @@
 
 APP_STAGE="staging"
 
-export AWS_ACCESS_KEY_ID=YOLO
-export AWS_SECRET_ACCESS_KEY=YOLO
-
 if [ "$TRAVIS_BRANCH" == "master" ]; then
   APP_STAGE="production"
 fi
