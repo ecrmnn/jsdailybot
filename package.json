@@ -14,7 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
-    "carbon-now-cli": "^1.4.0",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
