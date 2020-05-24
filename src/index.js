@@ -5,7 +5,7 @@ const config = require('./config.js');
 const client = new Twitter(config);
 
 // Upload photo
-const photo = readFileSync('../snippets/img/copy.js.png');
+const photo = readFileSync('./snippets/img/copy.js.png');
 
 client.post('media/upload', { media: photo }, (error, media) => {
   if (!error) {
