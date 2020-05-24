@@ -7,7 +7,6 @@ provider:
   memorySize: 256
   timeout: 30
   environment:
-    APP_ENV: 'local'
     TWITTER_CONSUMER_KEY: A2aGvbhWr08fphmKJE8iXC6DA
     TWITTER_CONSUMER_SECRET: LVRGm9EXyemXOwyWdiVmNvVOGwDdNqATPUhw9rD1vqCrsEZd8n
     TWITTER_ACCESS_TOKEN_KEY: 1264489447829233664-VKww2Hb174crgImR5I2QsuyFdkIJon
