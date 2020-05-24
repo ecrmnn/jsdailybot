@@ -1,0 +1,27 @@
+{
+  "name": "jsdailybot",
+  "version": "1.0.0",
+  "description": "Twitter bot",
+  "main": "src/index.js",
+  "scripts": {
+    "pretest": "node src/generateImages.js",
+    "test": "mocha tests/test.js",
+    "posttest": "npm run eslint",
+    "eslint": "eslint src/ tests/ --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "carbon-now-cli": "^1.4.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "mocha": "^7.2.0"
+  }
+}
