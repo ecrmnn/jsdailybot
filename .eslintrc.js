@@ -7,14 +7,14 @@ module.exports = {
     'import',
   ],
   rules: {
-    'curly': [
+    curly: [
       'error',
       'all',
     ],
     'brace-style': [
       'error',
       '1tbs',
-      { 'allowSingleLine': false },
+      { allowSingleLine: false },
     ],
     'no-console': 'error',
     'no-ternary': 'error',

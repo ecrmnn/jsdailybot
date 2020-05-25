@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Twitter = require('twitter');
 const axios = require('axios');
 const fm = require('front-matter');
