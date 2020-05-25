@@ -4,7 +4,6 @@
   "description": "Twitter bot",
   "main": "src/index.js",
   "scripts": {
-    "pretest": "node src/generateImages.js",
     "test": "mocha tests/test.js",
     "posttest": "npm run eslint",
     "eslint": "eslint src/ tests/ --fix"
