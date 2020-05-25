@@ -1,31 +1,53 @@
 const Twitter = require('twitter');
-const { readFileSync } = require('fs');
+const axios = require('axios');
+const fm = require('front-matter');
+const { readdirSync, readFileSync } = require('fs');
 const config = require('./config.js');
+
+const generateImage = async (code) => {
+  const { data } = await axios.post('https://carbonara.now.sh/api/cook', {
+    code,
+    backgroundColor: '#4A90E2',
+    paddingHorizontal: '20px',
+    paddingVertical: '20px',
+    theme: 'one dark',
+  }, {
+    responseType: 'arraybuffer',
+  });
+
+  return Buffer.from(data);
+};
+
+const getRandomSnippet = () => {
+  const snippets = readdirSync('./snippets/');
+  const randomSnippetFilename = snippets[Math.floor(Math.random() * snippets.length)];
+  const markdown = readFileSync(`./snippets/${randomSnippetFilename}`, 'utf-8');
+
+  const parsed = fm(markdown);
+
+  return {
+    text: parsed.attributes.description,
+    body: parsed.body,
+  };
+};
 
 module.exports.handler = async (event, context, callback) => {
   const client = new Twitter(config);
 
-  // Upload photo
-  const photo = readFileSync('./snippets/img/copy.js.png');
+  const { text, body } = getRandomSnippet();
+  const media = await generateImage(body);
 
-  client.post('media/upload', { media: photo }, (error, media) => {
+  client.post('media/upload', { media }, (error, m) => {
     if (!error) {
       const status = {
-        status: 'I am a tweet',
-        media_ids: media.media_id_string,
+        status: text,
+        media_ids: m.media_id_string,
       };
 
-      client.post('statuses/update', status, (tweetError, tweet) => {
-        if (!tweetError) {
-        // eslint-disable-next-line
-        console.log(tweet);
-        }
-
-        return callback(null, {
-          statusCode: 200,
-          body: 'html',
-        });
-      });
+      client.post('statuses/update', status, () => callback(null, {
+        statusCode: 200,
+        body: 'html',
+      }));
     }
 
     return callback(null, {
