@@ -1,14 +1,12 @@
-// const { describe, it } = require('mocha');
-// const { expect } = require('chai');
-// const { readdirSync } = require('fs');
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
+const { getRandomSnippet } = require('../src');
 
-// describe('Test Suite', () => {
-//   it('should have generated images for every snippet', () => {
-//     const codeSnippets = readdirSync('./snippets/code/');
-//     const imageSnippets = readdirSync('./snippets/img/')
-//       .filter((filename) => filename !== '.gitkeep')
-//       .map((filename) => filename.substring(0, filename.length - 4));
+describe('Test Suite', () => {
+  it('should pick a random snippet to tweet', () => {
+    const first = getRandomSnippet();
+    const second = getRandomSnippet();
 
-//     expect(codeSnippets).to.eql(imageSnippets);
-//   });
-// });
+    expect(first.body).not.to.eql(second.body);
+  });
+});

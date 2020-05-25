@@ -31,7 +31,7 @@ const getRandomSnippet = () => {
   };
 };
 
-module.exports.handler = async (event, context, callback) => {
+const handler = async (event, context, callback) => {
   const client = new Twitter(config);
 
   const { text, body } = getRandomSnippet();
@@ -55,4 +55,10 @@ module.exports.handler = async (event, context, callback) => {
       body: 'html',
     });
   });
+};
+
+module.exports = {
+  handler,
+  generateImage,
+  getRandomSnippet,
 };
