@@ -1,5 +1,5 @@
 ---
-description: "Here's how to merge multiple arrays with the spread operator! #ES6 is amazing!"
+description: "🤙 Here's how to merge multiple arrays with the spread operator! #ES6 is amazing!"
 ---
 const firstArray = [1, 2, 3];
 const secondArray = [4, 5, 6];

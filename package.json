@@ -4,7 +4,7 @@
   "description": "Twitter bot",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha tests/test.js",
+    "test": "mocha tests/test.js --timeout 10000",
     "posttest": "npm run eslint",
     "eslint": "eslint src/ tests/ --fix"
   },

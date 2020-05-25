@@ -1,6 +1,6 @@
 ---
-description: "You can aslo use destructuring when getting the first item in an array! #es6"
+description: "🥇 You can also use destructuring when getting the first item in an array! #es6"
 ---
-const array = ['🍌', '🍓', '🍍'];
+const fruits = ['apple', 'orange', 'mango'];
 
-const [banana] = array;
+const [apple] = fruits;
