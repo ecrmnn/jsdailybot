@@ -3,6 +3,7 @@ const { expect } = require('chai');
 const { readFileSync } = require('fs');
 const { generateImage, getRandomSnippet } = require('../src');
 const getSnippets = require('../src/getSnippets');
+const generateColorScheme = require('../src/generateColorScheme');
 
 describe('Test Suite', () => {
   it('should pick a random snippet to tweet', () => {
@@ -52,5 +53,15 @@ describe('Test Suite', () => {
 
   it('should have a code block', () => {
     expect(getSnippets().every(({ code }) => code.length)).to.eql(true);
+  });
+
+  it('should generate a color scheme', () => {
+    const set = new Set([
+      generateColorScheme(),
+      generateColorScheme(),
+      generateColorScheme(),
+    ]);
+
+    expect(set.size).to.be.greaterThan(1);
   });
 });

@@ -3,15 +3,13 @@ require('dotenv').config();
 const Twitter = require('twitter');
 const axios = require('axios');
 const getSnippets = require('./getSnippets');
+const generateColorScheme = require('./generateColorScheme');
 const config = require('./config');
 
 const generateImage = async (code) => {
   const { data } = await axios.post('https://carbonara.now.sh/api/cook', {
     code,
-    backgroundColor: '#4A90E2',
-    paddingHorizontal: '20px',
-    paddingVertical: '20px',
-    theme: 'one dark',
+    ...generateColorScheme(),
   }, {
     responseType: 'arraybuffer',
   });
