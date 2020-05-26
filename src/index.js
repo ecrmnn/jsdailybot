@@ -2,9 +2,8 @@ require('dotenv').config();
 
 const Twitter = require('twitter');
 const axios = require('axios');
-const fm = require('front-matter');
-const { readdirSync, readFileSync } = require('fs');
-const config = require('./config.js');
+const getSnippets = require('./getSnippets');
+const config = require('./config');
 
 const generateImage = async (code) => {
   const { data } = await axios.post('https://carbonara.now.sh/api/cook', {
@@ -21,23 +20,17 @@ const generateImage = async (code) => {
 };
 
 const getRandomSnippet = () => {
-  const snippets = readdirSync('./snippets/');
-  const randomSnippetFilename = snippets[Math.floor(Math.random() * snippets.length)];
-  const markdown = readFileSync(`./snippets/${randomSnippetFilename}`, 'utf-8');
+  const snippets = getSnippets();
+  const random = snippets[Math.floor(Math.random() * snippets.length)];
 
-  const parsed = fm(markdown);
-
-  return {
-    text: parsed.attributes.description,
-    body: parsed.body,
-  };
+  return random;
 };
 
 const handler = async (event, context, callback) => {
   const client = new Twitter(config);
 
-  const { text, body } = getRandomSnippet();
-  const media = await generateImage(body);
+  const { text, code } = getRandomSnippet();
+  const media = await generateImage(code);
 
   client.post('media/upload', { media }, (error, m) => {
     if (!error) {
