@@ -12,4 +12,4 @@ functions:
     handler: src/index.handler
     events:
       # Greenwich Mean Time
-      - schedule: cron(55 17 * * ? *)
+      - schedule: cron(5 * * * *)
