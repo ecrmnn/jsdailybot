@@ -37,18 +37,10 @@ const handler = async (event, context, callback) => {
         media_ids: m.media_id_string,
       };
 
-      client.post('statuses/update', status, (e) => {
-        // eslint-disable-next-line
-        console.log(e);
-
-        callback(null, {
-          statusCode: 200,
-          body: 'html',
-        });
-      });
-    } else {
-      // eslint-disable-next-line
-      console.log(error);
+      client.post('statuses/update', status, () => callback(null, {
+        statusCode: 200,
+        body: 'html',
+      }));
     }
 
     return callback(null, {
