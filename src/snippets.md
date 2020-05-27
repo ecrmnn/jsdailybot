@@ -326,7 +326,7 @@ el.style.transform = 'rotate(18deg)';
 //=> [2, 4, 6]
 
 // Reduce all numbers to a single value
-[1, 2, 3].reduce((number, acc) => number + acc);
+[1, 2, 3].reduce((acc, number) => acc + number);
 //=> 6
 ```
 
