@@ -343,3 +343,21 @@ el.style.display = 'none';
 // Show element
 el.style.display = 'block';
 ```
+
+-----
+
+> ⭐️ Use Buffer.from when you need to encode and decode in #JavaScript. #100DaysOfCode
+```js
+Buffer.from('Convert me').toString('base64');
+// 'Q29udmVydCBtZQ=='
+
+Buffer.from('Q29udmVydCBtZQ==', 'base64');
+// 'Convert me'
+```
+
+-----
+
+> 🗂 Did you know process.cwd() returns the current working directory of the #Nodejs process? #JavaScript #100DaysOfCode
+```js
+console.log(`Current directory: ${process.cwd()}`);
+```
